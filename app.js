@@ -4,12 +4,12 @@ const weatherIcon = document.querySelector(".weather-icon");
 const appContainer = document.querySelector(".app-container");
 
 
-const weatherApiKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+const weatherApiKey = '3923a1988dd69d0ffeb7716bad2e51ac';
 const weatherURL = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=`;
 
 
 
-const imageApiKey ="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; //Unplash API Key
+const imageApiKey ="IkBx5fEhLRcew7gZ3ChzeB3mqxOZ6--g8q5nf4dB6gU"; //Unplash API Key
 const imageURL = "https://api.unsplash.com/search/photos?page=1&query=";
 
 
