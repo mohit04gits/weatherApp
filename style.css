@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* RESET */
 *{
     margin: 0;
     padding: 0;
@@ -12,27 +13,34 @@
 html, body{
     height: 100%;
     width: 100%;
-    background: hsla(296, 100%, 6%, 1);
     background: linear-gradient(135deg, rgb(0, 15, 31) 72%, rgb(6, 35, 116) 100%);
     overflow: hidden;
-    font-family: "poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* MAIN APP BOX (Glass + Border + Shadow) */
 .app-container{
     position: absolute;
     width: 90%;
     max-width: 470px;
-    /* background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("images/weather.jpg"); */
-    background-size: cover;
-    background-position: center;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
     border-radius: 20px;
     padding: 40px 35px;
     text-align: center;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+    transition: 0.3s ease-in-out;
 }
 
+.app-container:hover{
+    box-shadow: 0 0 40px rgba(0,0,0,0.45);
+}
+
+/* SEARCH BOX */
 .search-box{
     width: 100%;
     display: flex;
@@ -46,35 +54,40 @@ html, body{
     font-size: 18px;
     padding: 10px 25px;
     border-radius: 25px;
-    color: #555;
-    background-color: #ebfffc;
-    border: none;
+    background-color: rgba(255,255,255,0.85);
+    border: 2px solid transparent;
+    color: #333;
     margin-right: 16px;
-    display: flex;
-    justify-content: center;
-}
-.search-box input:focus{
-    outline: none;
+    transition: 0.3s ease;
 }
 
-#search{
-    background-color: #ebfffc;
-    border-radius: 50%;
-    border: none;
+.search-box input:focus{
     outline: none;
+    border-color: #00eaff;
+    box-shadow: 0 0 10px rgba(0,234,255,0.4);
+}
+
+/* SEARCH BUTTON */
+#search{
+    background: rgba(255,255,255,0.85);
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.6);
     width: 60px;
     height: 60px;
     cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#search:hover{
+    background-color: rgba(255,255,255,1);
+    box-shadow: 0 0 12px rgba(255,255,255,0.6);
 }
 
 #search img{
     width: 20px;
 }
 
-#search:hover{
-    background-color: #e6ebea;
-}
-
+/* ERROR MESSAGE */
 .error{
     text-align: left;
     margin-left: 14px;
@@ -82,12 +95,17 @@ html, body{
     display: none;
 }
 
-
+/* WEATHER ICON */
 .weather-icon{
     width: 170px;
     margin-top: 30px;
+    padding: 10px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.2);
 }
 
+/* TEXTS */
 #condition{
     font-size: 17px;
     font-weight: 600;
@@ -97,31 +115,41 @@ html, body{
     font-size: 80px;
     font-weight: 500;
 }
+
 #city{
     font-size: 45px;
     font-weight: 400;
     margin-top: -10px;
 }
 
-
+/* DETAILS BOX (Humidity + Wind) */
 .details{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     margin-top: 50px;
+    gap: 15px;
 }
 
 .col{
     display: flex;
     align-items: center;
-    text-align: left;
+    background: rgba(255,255,255,0.08);
+    padding: 10px 16px;
+    border-radius: 15px;
+    border: 2px solid rgba(255,255,255,0.2);
+    transition: 0.3s ease;
+}
+
+.col:hover{
+    border-color: rgba(0,234,255,0.6);
+    box-shadow: 0 0 12px rgba(0,234,255,0.25);
 }
 
 .col img{
     width: 40px;
     margin-right: 10px;
-    margin-top: 0;
 }
 
 .humidity, .wind{
@@ -129,13 +157,8 @@ html, body{
     margin-top: -6px;
 }
 
-
-
-@media screen and (max-width:1000px) {
-    
-}
-
-@media screen and (max-width:550px) {
+/* MEDIA QUERIES */
+@media screen and (max-width: 550px){
     .app-container{
         top: 50px;
         left: 20px;
@@ -145,93 +168,83 @@ html, body{
         height: 85vh;
         margin: 0;
     }
-    .details{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-    }
+
     .search-box input{
         height: 50px;
-        width: 30%;
     }
+
     #search{
         width: 50px;
         height: 50px;
     }
+
     #search img{
         width: 15px;
     }
+
     .col img{
         width: 30px;
     }
+
     .humidity, .wind{
         font-size: 15px;
     }
-    .col div:last-child{
-        font-size: 12px;
-    }
 }
 
-@media screen and (max-height: 730px) {
+@media screen and (max-height: 730px){
     .app-container{
         top: 7vh;
         height: 84vh;
         bottom: 20px;
     }
+
     .search-box input{
         height: 40px;
-        width: 30%;
     }
+
     #search{
         width: 40px;
         height: 40px;
     }
+
     #search img{
         width: 12px;
     }
+
     #temp{
         font-size: 8vh;
     }
+
     #city{
         font-size: 25px;
     }
+
     .details{
         margin-top: 3vh;
     }
-    .col div:last-child{
-        font-size: 1.5vh;
-    }
 }
 
-
-
-
-
-/* CSS for Preloader */
-
-/**************/
+/* PRELOADER */
 #preloader{
     background-color: #212121;
     width: 100%;
     height: 100vh;
     position: fixed;
     z-index: 10;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-
+/* PRELOADER ANIMATION */
 .loader {
     position: relative;
     width: 120px;
     height: 90px;
     margin: 0 auto;
-  }
-  
-  .loader:before {
+}
+
+.loader:before {
     content: "";
     position: absolute;
     bottom: 30px;
@@ -241,9 +254,9 @@ html, body{
     border-radius: 50%;
     background: #2a9d8f;
     animation: loading-bounce 0.5s ease-in-out infinite alternate;
-  }
-  
-  .loader:after {
+}
+
+.loader:after {
     content: "";
     position: absolute;
     right: 0;
@@ -251,40 +264,30 @@ html, body{
     height: 7px;
     width: 45px;
     border-radius: 4px;
-    box-shadow: 0 5px 0 #f2f2f2, -35px 50px 0 #f2f2f2, -70px 95px 0 #f2f2f2;
+    box-shadow: 0 5px 0 #f2f2f2,
+                -35px 50px 0 #f2f2f2,
+                -70px 95px 0 #f2f2f2;
     animation: loading-step 1s ease-in-out infinite;
-  }
-  
-  @keyframes loading-bounce {
+}
+
+@keyframes loading-bounce {
+    0% { transform: scale(1,0.7); }
+    40% { transform: scale(0.8,1.2); }
+    60% { transform: scale(1,1); }
+    100% { bottom: 140px; }
+}
+
+@keyframes loading-step {
     0% {
-      transform: scale(1, 0.7);
+        box-shadow: 0 10px 0 rgba(0,0,0,0),
+                     0 10px 0 #f2f2f2,
+                     -35px 50px 0 #f2f2f2,
+                     -70px 90px 0 #f2f2f2;
     }
-  
-    40% {
-      transform: scale(0.8, 1.2);
-    }
-  
-    60% {
-      transform: scale(1, 1);
-    }
-  
     100% {
-      bottom: 140px;
+        box-shadow: 0 10px 0 #f2f2f2,
+                     -35px 50px 0 #f2f2f2,
+                     -70px 90px 0 #f2f2f2,
+                     -70px 90px 0 rgba(0,0,0,0);
     }
-  }
-  
-  @keyframes loading-step {
-    0% {
-      box-shadow: 0 10px 0 rgba(0, 0, 0, 0),
-              0 10px 0 #f2f2f2,
-              -35px 50px 0 #f2f2f2,
-              -70px 90px 0 #f2f2f2;
-    }
-  
-    100% {
-      box-shadow: 0 10px 0 #f2f2f2,
-              -35px 50px 0 #f2f2f2,
-              -70px 90px 0 #f2f2f2,
-              -70px 90px 0 rgba(0, 0, 0, 0);
-    }
-  }
+}
